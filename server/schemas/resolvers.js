@@ -28,7 +28,7 @@ const resolvers = {
         },
         addPost: async (parent, args, context) => {
             if(context.user){
-                const post = await Post.create(args);
+                const post = Post.create(args);
                 await User.findByIdAndUpdate(context.user._id, { $push: {posts: post} });
                 
                 return post;
@@ -38,7 +38,7 @@ const resolvers = {
         },
         updateUser: async (parent, args, context) => {
             if(context.user._id){
-                return await User.findOneAndUpdate(context.user._id, args, { new: true });
+                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
             }
 
             throw new AuthenticationError('Not logged in');
