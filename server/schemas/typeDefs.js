@@ -13,6 +13,7 @@ const typeDefs = gql`
     type Post {
         _id: ID
         subject: String
+        content: String
         image: String
         creator: User
     }
@@ -32,7 +33,7 @@ const typeDefs = gql`
         addUser(fisrt: String!, last: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         updateUser(firstName: String, lastName: String, email: String, password: String): User
-        addPost(_id: ID!, subject: String!, image: String, creator: ID): Post
+        addPost(_id: ID!, subject: String!, content: String!, image: String, creator: ID!): Post
     }
 `;
 
