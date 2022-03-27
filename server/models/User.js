@@ -42,7 +42,8 @@ const userSchema = new Schema({
   
   // compare the incoming password with the hashed password
   userSchema.methods.isCorrectPassword = async function(password) {
-    return await bcrypt.compare(password, this.password);
+    const hash = await bcrypt.compare(password, this.password);
+    return hash
   };
   
   const User = mongoose.model('User', userSchema);

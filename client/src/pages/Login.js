@@ -16,6 +16,7 @@ function Login() {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
+      console.log(mutationResponse);
       const token = mutationResponse.data.login.token;
       Auth.login(token);
 
@@ -27,7 +28,7 @@ function Login() {
   const handleChange = (event) => {
 
     const { name, value } = event.target;
-    setFormState({...formState, [name]: value })
+    setFormState({...formState, [name]: value });
   }
 
   return <div>
